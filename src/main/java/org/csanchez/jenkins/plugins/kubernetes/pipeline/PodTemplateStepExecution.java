@@ -103,6 +103,7 @@ public class PodTemplateStepExecution extends AbstractStepExecutionImpl {
             if (cloud instanceof KubernetesCloud) {
                 KubernetesCloud kubernetesCloud = (KubernetesCloud) cloud;
                 kubernetesCloud.removeTemplate(podTemplate);
+                kubernetesCloud.connect().pods().withName(podTemplate.getName()).delete();
             }
         }
     }
